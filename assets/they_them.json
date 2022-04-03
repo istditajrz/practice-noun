@@ -1,7 +1,7 @@
 {
     "subject":          "they",
     "object":           "them",
-    "pos_adjective":    "their",
-    "pos_pronoun":      "theirs",
+    "possessive adjective":    "their",
+    "possessive pronoun":      "theirs",
     "reflexive":        "themselves"
 }

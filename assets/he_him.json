@@ -1,7 +1,7 @@
 {
     "subject":          "he",
     "object":           "him",
-    "pos_adjective":    "his",
-    "pos_pronoun":      "his",
+    "possessive adjective":    "his",
+    "possessive pronoun":      "his",
     "reflexive":        "himself"
 }
