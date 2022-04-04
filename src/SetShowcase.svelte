@@ -1,4 +1,5 @@
 <script>
+    import Sentence from './Sentence.svelte';
     export let set = {
         "subject": null,
         "object": null,
@@ -116,7 +117,9 @@
     {/each}
 </div>
 <div class="container" style="margin-top: 5%;">
-    <span style="display: inline-block;">practice questions here <input style="height: 0%;"></span>
+    <Sentence str={"I like [their] scarf."}/>
+    <Sentence str={"That is [theirs]."}/>
+    <Sentence str={"[They] smiled."}/>
 </div>
 <style>
     .container {
