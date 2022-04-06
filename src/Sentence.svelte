@@ -1,27 +1,34 @@
 <script>
     const re = /\[\w+\]/g;
     export let str = "[They] smiled";
+    export let id = "";
     let pronouns = [...str.matchAll(re)];
+    pronouns.forEach((v, i, a) => a[i] = v[0]);
     let other = [...str.split(re)].reverse();
-    let sentence = [other.pop()];
-    for (let pronoun of pronouns) {
-        let element = document.createElement('input');
-        element.name = pronoun[0][0];
-        sentence.push(element.outerHTML);
-        sentence.push(other.pop());
+    export function check() {
+        for (let i = 0; i < pronouns.length; i++) {
+            console.info(document.getElementById(id + i), pronouns[i].slice(1, -1), document.getElementById(id + i).value !== pronouns[i].slice(1, -1));
+            if (document.getElementById(id + i).value !== pronouns[i].slice(1, -1)) {
+                return false;
+            }
+        }
+        return true;
     }
-    let out = sentence.join("");
 </script>
 
 <div class="container">
-    <span style="display: inline-block;">{@html out}</span>
+    <span style="display: inline-block;">
+        {other.pop()}
+        {#each pronouns as pronoun, index}
+            <input id={id + index}>
+            {other.pop()}
+        {/each}
+    </span>
 </div>
 <style>
     input {
         height: 0%;
-        border-radius: 20%;
-        color: antiquewhite;
-        opacity: 0%;
-        width: 10%;
+        background-color: antiquewhite;
+        opacity: 75%;
     }
 </style>

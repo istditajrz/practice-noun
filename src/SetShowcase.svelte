@@ -101,11 +101,15 @@
     colors.random = () => {
         return colors[Math.floor(colors.length * Math.random())];
     }
-
-    function check_sentences(s) {
-        s.forEach((str, index) => {
-            str
-        });
+    let components = [];
+    function check() {
+        for (let i = 0; i < components.length; i++) {
+            if (components[i].check()) {
+                document.getElementById("li " + i).className = "list-group-item list-group-item-success";
+            } else {
+                document.getElementById("li " + i).className = "list-group-item list-group-item-danger";
+            }
+        }
     }
 </script>
 
@@ -125,11 +129,17 @@
 </div>
 <div class="container" style="margin-top: 5%;">
     <ul class="list-group">
+        <li class="list-group-item">
+            <h2><i><strong>Sentences</strong></i></h2>
+        </li>
         {#each sentences as sentence, index}
-            <li class="list-group-item">
-                <Sentence str={sentence} id="{index}"/>
+            <li class="list-group-item" id={"li " + index}>
+                <Sentence str={sentence} id={index} bind:this={components[index]}/>
             </li>
         {/each}
+        <li class="list-group-item">
+            <button type="button" class="btn btn-primary" on:click={check}>Check!</button>
+        </li>
     </ul>
 </div>
 <style>
