@@ -8,6 +8,7 @@
         "possessive pronoun": null
     }; // pronoun set following the JSON format in ../assets
     export let name = null;
+    export let sentences = ["[Their] scarf is nice"];
     const colors = [
         "salmon",
         "pink",
@@ -100,6 +101,12 @@
     colors.random = () => {
         return colors[Math.floor(colors.length * Math.random())];
     }
+
+    function check_sentences(s) {
+        s.forEach((str, index) => {
+            str
+        });
+    }
 </script>
 
 <div class="container">
@@ -117,9 +124,13 @@
     {/each}
 </div>
 <div class="container" style="margin-top: 5%;">
-    <Sentence str={"I like [their] scarf."}/>
-    <Sentence str={"That is [theirs]."}/>
-    <Sentence str={"[They] smiled."}/>
+    <ul class="list-group">
+        {#each sentences as sentence, index}
+            <li class="list-group-item">
+                <Sentence str={sentence} id="{index}"/>
+            </li>
+        {/each}
+    </ul>
 </div>
 <style>
     .container {
