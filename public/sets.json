@@ -1,0 +1,23 @@
+{
+    "he/him": {
+        "subject":          "he",
+        "object":           "him",
+        "reflexive":        "himself",
+        "possessive adjective":    "his",
+        "possessive pronoun":      "his"
+    },
+    "she/her": {
+        "subject":          "she",
+        "object":           "her",
+        "reflexive":        "herself",
+        "possessive adjective":    "her",
+        "possessive pronoun":      "hers"
+    },
+    "they/them": {
+        "subject":          "they",
+        "object":           "them",
+        "reflexive":        "themselves",
+        "possessive adjective":    "their",
+        "possessive pronoun":      "theirs"
+    }
+}
