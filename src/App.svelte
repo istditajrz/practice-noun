@@ -1,5 +1,6 @@
 <script>
     import SetShowcase from './SetShowcase.svelte';
+	import SentenceGroup from './SentenceGroup.svelte';
     let set = {
         "subject": "they",
         "object": "them",
@@ -12,6 +13,7 @@
 
 <main>
 	<SetShowcase {set} {name}/>
+	<SentenceGroup/>
 </main>
 
 <style>
