@@ -16,15 +16,13 @@
     }
 </script>
 
-<div class="container">
-    <span style="display: inline-block;">
+<span style="display: inline-block;" id="span {id}">
+    {other.pop()}
+    {#each pronouns as pronoun, index}
+        <input id={id + index}>
         {other.pop()}
-        {#each pronouns as pronoun, index}
-            <input id={id + index}>
-            {other.pop()}
-        {/each}
-    </span>
-</div>
+    {/each}
+</span>
 <style>
     input {
         height: 0%;
