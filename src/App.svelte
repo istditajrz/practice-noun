@@ -1,19 +1,19 @@
 <script>
-    import SetShowcase from './SetShowcase.svelte';
-	import SentenceGroup from './SentenceGroup.svelte';
-    let set = {
-        "subject": "they",
-        "object": "them",
-        "reflexive": "themselves",
-        "possessive adjective": "their",
-        "possessive pronoun": "theirs"
-    }
-    let name = "they/them";
+    // import SetShowcase from './SetShowcase.svelte';
+	// import SentenceGroup from './SentenceGroup.svelte';
+    // let set = {
+    //     "subject": "they",
+    //     "object": "them",
+    //     "reflexive": "themselves",
+    //     "possessive adjective": "their",
+    //     "possessive pronoun": "theirs"
+    // }
+    // let name = "they/them";
+	import MainPage from './MainPage.svelte';
 </script>
 
 <main>
-	<SetShowcase {set} {name}/>
-	<SentenceGroup/>
+	<MainPage/>
 </main>
 
 <style>
@@ -23,7 +23,7 @@
 		max-width: 240px;
 		margin: 0 auto;
 	}
-
+	
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
