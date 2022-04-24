@@ -7,6 +7,7 @@
         "possessive pronoun": null
     }; // pronoun set following the JSON format in ../assets
     export let name = null;
+    export let params;
     const colors = [
         "salmon",
         "pink",
@@ -101,15 +102,15 @@
     }
 </script>
 
-<div class="container">
+<div class="container" style="--primary: {params.get('primary')}; --secondary: {params.get('secondary')}; --background: {params.get('background')};">
     <h2 style="color: {colors.random()};">{name}</h2>
     <h3><strong><i>Forms</i></strong></h3>
     {#each Object.keys(set) as key}
         <div class="row">
-            <div class="col">
+            <div class="col key">
                 <span><strong>{key}:</strong></span>
             </div>
-            <div class="col">
+            <div class="col value">
                 <span>{set[key]}</span>
             </div>
         </div>
@@ -121,5 +122,11 @@
         background-color: darkorchid;
         border-radius: 2%;
         padding: 5%;
+    }
+    .key {
+        color: var(--secondary);
+    }
+    .value {
+        color: var(--primary);
     }
 </style>

@@ -1,10 +1,15 @@
 <script>
-    export let sets = [
-        "he/him", "she/her", "they/them"
-    ];
+    import { onMount } from "svelte";
+
+
+    let sets = fetch('/data/set_names.json')
+        .then((res) => res.json())
+        .catch((e) => console.warn(e));
+
+    export let params;
     let search_term;
     let search_results = [];
-    document.addEventListener('DOMContentLoaded', () => {
+    onMount(() => {
         search_term.addEventListener('change', ev => {
             let req = new XMLHttpRequest();
             req.addEventListener('readystatechange', () => {
@@ -17,7 +22,9 @@
         });
     });
 </script>
-<div id="container" class="container">
+
+
+<div id="container" class="container" style="--primary: {params.get('primary')}; --secondary: {params.get('secondary')}; --background: {params.get('background')};">
     <div id="header" class="container">
         <h2><a href="https://github.com/istditajrz/practice-noun/" id="title" target="_blank" rel="noopener noreferrer">Practice-noun</a></h2>
         <span>By <i><a href="https://github.com/istditajrz" style="color: darkgrey;" target="_blank" rel="noopener noreferrer">Istditajrz</a></i></span>
@@ -32,7 +39,7 @@
                 <li class="list-group-item">
                     <span>
                         <a 
-                            href="/sets?={encodeURIComponent(Array.from([result]))}" 
+                            href="/sets?sets={encodeURIComponent(Array.from([result]))}" 
                             class="list-group-item list-group-item-action">
                             {result}
                         </a>
@@ -42,21 +49,26 @@
         </ul>
     </div>
     <ul class="list-group list-group-flush">
-        {#each sets as set}
-        <a href="/sets?={encodeURIComponent(Array.from([set]))}" class="list-group-item list-group-item-action">{set}</a>
-        {/each}
+        {#await sets then it}
+            {#each it as set}
+            <a href="/sets?={encodeURIComponent(JSON.stringify([set]))}" class="list-group-item list-group-item-action">{set}</a>
+            {/each}
+        {/await}
     </ul>
 </div>
 <style>
+    .list-group-item-action {
+        border-color: var(--secondary) !important;
+    }
     #title {
-        color: black;
+        color: var(--primary);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         text-decoration: none;
     }
     #title:hover {
-        color: black;
+        color: var(--primary);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-decoration: underline black;
+        text-decoration: underline var(--primary);
     }
     #header {
         padding-bottom: 5%;
