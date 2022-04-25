@@ -4,6 +4,8 @@ import sqlite3
 
 app = Flask(__name__)
 
+app.debug = True
+
 DB = "./sets.db"
 
 @app.route('/public/<path:path>')
@@ -29,12 +31,13 @@ def data(endpoint):
                 "sets": [item[0] for item in cur.execute('select name from sets')]
             }
         elif endpoint.startswith('sentences/'):
-            stripped_endpoint = str(endpoint).removeprefix('sentences/')
+            stripped_endpoint = str(endpoint)[len('sentences/'):]
             return "Not Implemented", 501
         elif endpoint.endswith('.json'):
+            e = endpoint[:-len(".json")]
             result = cur.execute(
                 "select name, subject, object, reflexive, \"possessive adjective\", \"possessive pronoun\" from sets where name =:name ;", 
-                {"name": endpoint.removesuffix(".json")}
+                {"name": e }
             ).fetchone()
             if result == None:
                 return 'null', 404
