@@ -32,7 +32,6 @@ def data(endpoint):
             stripped_endpoint = str(endpoint).removeprefix('sentences/')
             return "Not Implemented", 501
         elif endpoint.endswith('.json'):
-            print(endpoint)
             result = cur.execute(
                 "select name, subject, object, reflexive, \"possessive adjective\", \"possessive pronoun\" from sets where name =:name ;", 
                 {"name": endpoint.removesuffix(".json")}
