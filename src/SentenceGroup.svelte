@@ -1,6 +1,7 @@
 <script>
     import Sentence from './Sentence.svelte';
-    export let sentences = ["[Their] scarf is nice", "[Xe] hate JKR."];
+    export let name = "they/them";
+    export let sentences = ["[Their] scarf is nice"];
     let components = [];
     function check() {
         for (let i = 0; i < components.length; i++) {
@@ -29,6 +30,7 @@
 </script>
 
 <div class="container" style="margin-top: 2%;">
+    <h3><i>{name}</i></h3>
     <ul class="list-group">
         <li class="list-group-item">
             <h2><i><strong>Sentences</strong></i></h2>
