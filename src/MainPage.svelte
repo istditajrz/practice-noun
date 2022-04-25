@@ -50,8 +50,8 @@
     </div>
     <ul class="list-group list-group-flush">
         {#await sets then it}
-            {#each it as set}
-            <a href="/sets?={encodeURIComponent(JSON.stringify([set]))}" class="list-group-item list-group-item-action">{set}</a>
+            {#each it.sets as set}
+            <a href="/sets?sets={encodeURIComponent(JSON.stringify([set]))}" class="list-group-item list-group-item-action">{set}</a>
             {/each}
         {/await}
     </ul>
