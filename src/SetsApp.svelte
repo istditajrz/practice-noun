@@ -2,6 +2,7 @@
     import SetShowcase from "./SetShowcase.svelte";
     import SentenceGroup from "./SentenceGroup.svelte";
     export let params;
+    console.log(decodeURIComponent(params.get('sets')));
     let sets_array = JSON.parse(decodeURIComponent(params.get('sets')));
     let sets = {};
     sets = Promise.all(

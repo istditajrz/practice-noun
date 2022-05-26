@@ -10,7 +10,7 @@
     let search_term;
     let search_results = [];
     onMount(() => {
-        search_term.addEventListener('change', ev => {
+        search_term.addEventListener('change', () => {
             let req = new XMLHttpRequest();
             req.addEventListener('readystatechange', () => {
                 if (this.readystate == 4 && this.status == 200) {
@@ -51,7 +51,7 @@
     <ul class="list-group list-group-flush">
         {#await sets then it}
             {#each it.sets as set}
-            <a href="/sets?sets={encodeURIComponent(JSON.stringify([set]))}" class="list-group-item list-group-item-action">{set}</a>
+            <a href="/sets?{window.location.search.substring(1)}&sets={encodeURIComponent(JSON.stringify([set]))}" class="list-group-item list-group-item-action">{set}</a>
             {/each}
         {/await}
     </ul>
