@@ -18,20 +18,20 @@
             }
         )
     )
-    // let sentences = Promise.resolve({});
-    // if (!params.has('sentences') || decodeURIComponent(params.get('sentences')) == true) {
-    //     sentences = Promise.all(
-    //         sets_array.map(key => {
-    //             return fetch(`/data/sentences/${encodeURIComponent(key)}.json`)
-    //                 .then(
-    //                     (v) => v.json(),
-    //                     ()  => new Promise.resolve(null)
-    //                 )
-    //                 .then( (value) => { return {key: key, value: value.sentences}; } )
-    //             }
-    //         )
-    //     );
-    // }
+    let sentences = Promise.resolve({});
+    if (!params.has('sentences') || (decodeURIComponent(params.get('sentences')) === 'true')) {
+        sentences = Promise.all(
+            sets_array.map(key => {
+                return fetch(`/data/sentences/${encodeURIComponent(key)}.json`)
+                    .then(
+                        (v) => v.json(),
+                        ()  => new Promise.resolve(null)
+                    )
+                    .then( (value) => { return {key: key, value: value.sentences}; } )
+                }
+            )
+        );
+    }
 </script>
 
 <main>
@@ -42,11 +42,11 @@
             {/if}
         {/each}
     {/await}
-    <!-- {#await sentences then it}
+    {#await sentences then it}
         {#each it as {key: name, value: sentenceSet}}
             <SentenceGroup sentences={sentenceSet} {name} {params}/>
         {/each}
-    {/await} -->
+    {/await}
 </main>
 <style>
     main {
